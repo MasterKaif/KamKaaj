@@ -16,6 +16,10 @@ class Task(db.Model):
     time = db.Column(db.Time, nullable=True)
     date = db.Column(db.Date, nullable=True)
     status = db.Column(db.Integer, db.ForeignKey('task_statuses.id'), nullable=False)
+    created_by = db.Column(UUID(as_uuid=True), db.ForeignKey('users.id'), nullable=False)
+    
+    contact_person_user = db.relationship("User", foreign_keys=[contact_person])
+    created_by_user = db.relationship("User", foreign_keys=[created_by])
 
     def __repr__(self):
-        return f"<Task {self.title}>"  
+        return f"<Task {self.entity_name}>"  

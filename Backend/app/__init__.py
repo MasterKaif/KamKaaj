@@ -9,7 +9,7 @@ db = SQLAlchemy()
 ma = Marshmallow()
 migrate = Migrate()
 
-from .models import User, Task, TaskType, TaskStatus, UserTask 
+from .models import User, Task, TaskType, TaskStatus 
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
