@@ -1,0 +1,68 @@
+<div *ngIf="isModalOpen" class="modal-overlay"></div>
+<div *ngIf="isModalOpen" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>NEW TASK</h2>
+        <div class="status-buttons">
+          <button class="open-btn">Open</button>
+          <button class="closed-btn">Closed</button>
+        </div>
+      </div>
+      <form>
+        <div class="form-group">
+          <input type="text" id="entityName" name="entityName" placeholder="Entity Name" required>
+        </div>
+        <div class="form-group date-time-group">
+            <div class="date-input">
+              <input type="date" id="date" name="date" placeholder="Date" required>
+            </div>
+            <div class="time-inputs">
+              <select id="hours" name="hours">
+                <option value="12">12</option>
+                <option value="11">11</option>
+                <option value="10">10</option>
+                <option value="09">09</option>
+                <option value="08">08</option>
+                <option value="07">07</option>
+                <option value="06">06</option>
+                <option value="05">05</option>
+                <option value="04">04</option>
+                <option value="03">03</option>
+                <option value="02">02</option>
+                <option value="01">01</option>
+              </select>
+              <select id="minutes" name="minutes">
+                <option value="00">00</option>
+                <option value="15">15</option>
+                <option value="30">30</option>
+                <option value="45">45</option>                
+              </select>
+              <select id="period" name="period">
+                <option value="PM">PM</option>
+                <option value="AM">AM</option>
+              </select>
+            </div>
+          </div>
+        <div class="form-group">
+          <select id="call" name="call">
+            <option value="call">Call</option>
+            <option value="meeting">Meeting</option>
+            <option value="video-call">Video Call</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input type="text" id="phoneNumber" placeholder="Phone Number" name="phoneNumber">
+        </div>
+        <div class="form-group">
+          <input type="text" id="contactPerson" placeholder="Contact person" name="contactPerson">
+        </div>
+        <div class="form-group">
+          <textarea id="note" name="note" placeholder="Note (optional)"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="cancel-btn" (click)="onCancel()">CANCEL</button>
+          <button type="submit" class="save-btn" (click)="onSave()">SAVE</button>
+        </div>
+      </form>
+    </div>
+  </div>

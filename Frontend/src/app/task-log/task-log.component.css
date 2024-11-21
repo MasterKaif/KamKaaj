@@ -1,0 +1,217 @@
+/* Container for the entire task log section */
+.task-container {
+  margin-top: 100px;
+  max-width: 1200px;
+  margin: 20px auto;
+  /* padding: 20px; */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: #f7f7f7; /* Light gray background */
+  border-bottom: 1px solid #ddd; /* Optional: Adds a subtle border at the bottom */
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Spacing between title and button */
+}
+
+.header h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  color: #333; /* Dark text for the title */
+}
+
+.btn-new-task {
+  padding: 8px 16px;
+  margin-left: 30px;
+  /* background-color: #007bff; Blue background */
+  color: #000000; /* White text */
+  border-color: black;
+  border-width: 2px;
+  /* border-radius: 4px; */
+  cursor: pointer;
+}
+
+.btn-new-task:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.search-bar {
+  max-width: 300px;
+  width: 100%;
+  margin-right: 20px;
+  border: none;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.filter-btn {
+  border: none;
+  background-color: #f4f4f4;
+}
+
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  color: #555;
+  padding: 12px 8px;
+  background-color: #f4f4f4;
+  border-bottom: 2px solid #eaeaea;
+}
+
+tbody tr td {
+  font-size: 14px;
+  padding: 12px 8px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+tbody tr td .btn-options {
+  padding: 6px 12px;
+  font-size: 12px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+tbody tr td .btn-options:hover {
+  background-color: #ddd;
+}
+
+.status {
+  color: #333; 
+}
+
+.status.open {
+  color: #ff9900; 
+}
+
+.status.closed {
+  color: #87CEEB; 
+}
+
+/* Notes with a "Add Note" button */
+td .btn-add-note {
+  padding: 6px 12px;
+  font-size: 12px;
+  color: #007bff;
+  background-color: transparent;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+td .btn-add-note:hover {
+  color: #fff;
+  background-color: #007bff;
+}
+
+/* Filter icon container */
+.filter-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+/* Filter icon image */
+.filter-icon img {
+  width: 12px;
+  height: 12px;
+}
+
+/* Dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown button */
+.btn-options {
+  background-color: #007bff; /* Blue background */
+  color: black;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Dropdown menu (hidden by default) */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  margin: 0;
+  padding: 5px 0;
+  z-index: 1000;
+  min-width: 150px;
+}
+
+/* Dropdown menu items */
+.dropdown-menu li {
+  padding: 10px 15px;
+  cursor: pointer;
+  color: #333;
+  font-size: 14px;
+}
+
+/* Hover effect for menu items */
+.dropdown-menu li:hover {
+  background-color: #f8f9fa;
+}
+
+/* Show dropdown menu on hover or click */
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+  display: block;
+}
+
+
+/* Adjustments for responsiveness */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-bar input {
+    width: 100%;
+  }
+}

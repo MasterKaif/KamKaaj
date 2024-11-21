@@ -1,0 +1,124 @@
+<div class="task-container">
+  <div class="header">
+    <!-- Left side of header -->
+    <div class="header-left">
+      <h2>Sales Log</h2>
+      <button class="btn-new-task" (click)="openNewTaskModal()">+ New Task</button>
+    </div>
+
+    <!-- Right side: Search bar -->
+    <div class="search-bar"> 
+      <input type="text" placeholder="Search" />
+    </div>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Date
+          <div class="dropdown">
+            <button class="filter-btn" (click)="getFilterOptions('Date')">
+              <span class="filter-icon">
+                <img src="filter.png" alt="Filter" />
+              </span>
+            </button>
+            <ul class="dropdown-menu" >
+              <li *ngFor="let Date of filterOptions['dates']" >{{Date}}</li>
+            </ul>
+          </div>
+          <button class="filter-btn">
+            <span class="filter-icon">
+              <img src="filter.png" alt="Filter" />
+            </span>
+          </button>
+        </th>
+        <th>
+          Entity Name
+          <button class="filter-btn">
+            <span class="filter-icon">
+              <img src="filter.png" alt="Filter" />
+            </span>
+          </button>
+        </th>
+        <th>
+          Task Type
+          <button class="filter-btn">
+            <span class="filter-icon">
+              <img src="filter.png" alt="Filter" />
+            </span>
+          </button>
+        </th>
+        <th>
+          Time
+          <button class="filter-btn">
+            <span class="filter-icon">
+              <img src="filter.png" alt="Filter" />
+            </span>
+          </button>
+        </th>
+        <th>
+          Contact Person
+          <button class="filter-btn">
+            <span class="filter-icon">
+              <img src="filter.png" alt="Filter" />
+            </span>
+          </button>
+        </th>
+        <th>
+          Notes
+          <button class="filter-btn">
+            <span class="filter-icon">
+              <img src="filter.png" alt="Filter" />
+            </span>
+          </button>
+        </th>
+        <th>
+          Status
+          <button class="filter-btn">
+            <span class="filter-icon">
+              <img src="filter.png" alt="Filter" />
+            </span>
+          </button>
+        </th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks">
+        <td>{{ task.date }}</td>
+        <td>{{ task.entity_name }}</td>
+        <td>
+          <span>
+            <i [ngClass]="getTaskTypeIconClass(task.task_type.type)" style="margin-right: 8px;" ></i> {{ task.task_type.type }}
+          </span>
+        </td>
+        
+        <td>{{ task.time }}</td>
+        <td>{{ task.contact_person.name }}</td>
+        <td>
+          <!-- Check if 'note' is empty or not -->
+          <span *ngIf="task.note && task.note.trim() !== ''">{{ task.note }}</span>
+          <button *ngIf="!task.note || task.note.trim() === ''" class="btn-add-note">
+            Add Note
+          </button>
+        </td>
+        <td class="status" [ngClass]="getStatusClass(task.status.id)">
+          {{ task.status.name }}
+        </td>
+        <td>
+          <div class="dropdown">
+            <button class="btn-options">Options  v</button>
+            <ul class="dropdown-menu">
+              <li >Duplicate</li>
+              <li >Edit</li>
+              <li>
+                Change Status to {{ task.status.name === 'Open' ? 'Closed' : 'Open' }}
+              </li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

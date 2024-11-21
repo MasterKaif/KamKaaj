@@ -1,0 +1,7 @@
+<div class="filter-bar">
+    <span *ngFor="let filter of filters; let i = index" class="filter-chip">
+      {{ filter.key }}: {{ filter.value }}
+      <button (click)="removeFilterAtIndex(i)" class="remove-btn">x</button>
+    </span>
+</div>
+  
