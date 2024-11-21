@@ -5,3 +5,5 @@ marshmallow-sqlalchemy
 psycopg2-binary
 Flask-Migrate
 Flask-Cors
+pyjwt
+gunicorn
