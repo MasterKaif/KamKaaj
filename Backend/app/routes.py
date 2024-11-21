@@ -142,10 +142,21 @@ def get_tasks():
         task_data = {
             "id": str(task.id),
             "entity_name": task.entity_name,
-            "task_type": task.task_type,
-            "contact_person": str(task.contact_person),
+            "task_type": {
+                "id": task.task_type,
+                "type": task.task_type_data.type,
+                "icon": task.task_type_data.icon
+            },
+            "contact_person": {
+                "id": str(task.contact_person),
+                "name": task.contact_person_user.name,
+                "email": task.contact_person_user.email
+            },
             "note": task.note,
-            "status": task.status,
+            "status": {
+                "id": task.status,
+                "name": task.status_data.status
+            },
             "date": task.date.strftime("%Y-%m-%d") if task.date else None,
             "time": task.time.strftime("%H:%M:%S") if task.time else None,
             "created_at": task.created_at.strftime("%Y-%m-%d %H:%M:%S"),

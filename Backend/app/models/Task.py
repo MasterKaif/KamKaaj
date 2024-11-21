@@ -20,6 +20,9 @@ class Task(db.Model):
     
     contact_person_user = db.relationship("User", foreign_keys=[contact_person])
     created_by_user = db.relationship("User", foreign_keys=[created_by])
+    task_type_data = db.relationship("TaskType", foreign_keys=[task_type])
+    status_data = db.relationship("TaskStatus", foreign_keys=[status])
+    
 
     def __repr__(self):
         return f"<Task {self.entity_name}>"  
