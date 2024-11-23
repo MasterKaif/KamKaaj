@@ -138,7 +138,7 @@ export class TaskLogComponent {
 
   async getFilterOptions(option: string): Promise<any> {
     try{
-      const response: AxiosResponse<any> = await axios.get(`http://127.0.0.1:5000/${option}`, {
+      const response: AxiosResponse<any> = await axios.get(`${baseurl}${option}`, {
         headers: {
         'user_id': '6e27a7f3-961a-4b3e-90d9-6cc8773988ba',
         'Content-Type': 'application/json',

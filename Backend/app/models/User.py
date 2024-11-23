@@ -16,8 +16,8 @@ class User(db.Model):
 
 
     # Relationship with Task (assuming a user can have multiple tasks)
-    tasks_contact = db.relationship("Task", foreign_keys="Task.contact_person")
-    tasks_created = db.relationship("Task", foreign_keys="Task.created_by")
+    # tasks_contact = db.relationship("Task", foreign_keys="Task.contact_person")
+    # tasks_created = db.relationship("Task", foreign_keys="Task.created_by")
 
 
     def __repr__(self):

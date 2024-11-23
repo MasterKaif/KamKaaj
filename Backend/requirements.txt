@@ -7,3 +7,4 @@ Flask-Migrate
 Flask-Cors
 pyjwt
 gunicorn
+python-dotenv
