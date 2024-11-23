@@ -50,7 +50,8 @@ def signup():
 @main.route("/tasks", methods=["POST"])
 def create_task():
     
-    user_id = request.headers.get("user_id")
+    # user_id = request.headers.get("user_id")
+    user_id = "6e27a7f3-961a-4b3e-90d9-6cc8773988ba"
     data = request.get_json()
     note = data.get("note")
     entity_name = data.get("entity_name")
@@ -82,7 +83,7 @@ def create_task():
 
 @main.route('/tasks/<id>', methods=['PUT'])
 def update_task(id):
-    user_id = request.headers.get("user_id")
+    # user_id = request.headers.get("user_id")
     data = request.get_json()
     
     
@@ -113,7 +114,7 @@ def update_task(id):
 
 @main.route("/tasks", methods=['GET'])
 def get_tasks():
-    user_id = request.headers.get("user_id")
+    # user_id = request.headers.get("user_id")
     
     filters = []
     
@@ -140,7 +141,7 @@ def get_tasks():
     if entity_name:
         filters.append(Task.entity_name.ilike(f"%{entity_name}%"))
         
-    filters.append(Task.created_by == user_id)
+    # filters.append(Task.created_by == user_id)
         
     tasks_query = Task.query.filter(*filters)
     
@@ -197,15 +198,16 @@ def delete_task(id):
 @main.route('/dates', methods=["GET"])
 def get_dates():
     try:
-        user_id = request.headers.get("user_id")
+        # user_id = request.headers.get("user_id")
         dates = db.session.execute(
-            select(distinct(Task.date)).where(Task.created_by == user_id)
+            select(distinct(Task.date))
+            # .where(Task.created_by == user_id)
         ).scalars().all()
         
         serialized_dates = [d.strftime("%Y-%m-%d") for d in dates]
 
         return jsonify({
-            "user_id": user_id,
+            # "user_id": user_id,
             "dates": serialized_dates
         }), 200
 
@@ -217,13 +219,14 @@ def get_dates():
 @main.route('/entities', methods=['GET'])
 def get_entities():
     try:
-        user_id = request.headers.get("user_id")
+        # user_id = request.headers.get("user_id")
         entities = db.session.execute(
-            select(distinct(Task.entity_name)).where(Task.created_by == user_id)
+            select(distinct(Task.entity_name))
+            # .where(Task.created_by == user_id)
         ).scalars().all()
         
         return jsonify({
-            "user_id": user_id,
+            # "user_id": user_id,
             "entities": entities
         }), 200
         
@@ -252,16 +255,17 @@ def get_types():
 @main.route('/time_slots', methods=['GET'])
 def get_tim_slots():
     try:
-        user_id = request.headers.get("user_id")
+        # user_id = request.headers.get("user_id")
         time_slots = db.session.execute(
-            select(distinct(Task.time)).where(Task.created_by == user_id)
+            select(distinct(Task.time))
+            # .where(Task.created_by == user_id)
         ).scalars().all()
         
         time_slots_str = [time_slot.strftime("%H:%M:%S") for time_slot in time_slots if time_slot is not None]
         
         
         return jsonify({
-            "user_id": user_id,
+            # "user_id": user_id,
             "time_slots": time_slots_str
         }), 200
         
