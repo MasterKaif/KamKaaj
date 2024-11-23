@@ -60,7 +60,7 @@ def create_task():
     hours = data.get("hours") or "12"
     minutes = data.get("minutes") or "00"
     period = data.get("period") or "AM"
-    submit_time = create_time_object(hours, minutes, period)
+    submit_time = create_time_object(int(hours), int(minutes), period)
     
     status = 10
     
