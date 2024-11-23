@@ -16,67 +16,120 @@
       <tr>
         <th>
           Date
-          <div class="dropdown">
-            <button class="filter-btn" (click)="getFilterOptions('Date')">
+          <div class="dropdown" (mouseover)="showDropdown('Date')" (mouseout)="hideDropdown('Date')">
+            <button class="filter-btn">
               <span class="filter-icon">
                 <img src="filter.png" alt="Filter" />
               </span>
             </button>
+            <div *ngIf="visibleDropdown === 'Date'" class="dropdown-menu">
+              <li *ngFor="let option of filterOptions['Date']" (click)="applyFilter('date', option)">
+                <span *ngIf="option?.id">{{ option.name }}</span>
+                <span *ngIf="!option?.id">{{ option }}</span>
+              </li>
+            </div>
           </div>
         </th>
         <th>
           Entity Name
-          <button class="filter-btn">
-            <span class="filter-icon">
-              <img src="filter.png" alt="Filter" />
-            </span>
-          </button>
+          <div class="dropdown" (mouseenter)="showDropdown('Entity Name')" (mouseleave)="hideDropdown('Entity Name')">
+            <button class="filter-btn">
+              <span class="filter-icon">
+                <img src="filter.png" alt="Filter" />
+              </span>
+            </button>
+            <div *ngIf="visibleDropdown === 'Entity Name'" class="dropdown-menu">
+              <li *ngFor="let option of filterOptions['Entity Name']" (click)="applyFilter('entity_name', option)">
+                <span *ngIf="option?.id">{{ option.name }}</span>
+                <span *ngIf="!option?.id">{{ option }}</span>
+              </li>
+            </div>
+          </div>
         </th>
         <th>
           Task Type
-          <button class="filter-btn">
-            <span class="filter-icon">
-              <img src="filter.png" alt="Filter" />
-            </span>
-          </button>
+          <div class="dropdown" (mouseenter)="showDropdown('Task Type')" (mouseleave)="hideDropdown('Task Type')">
+            <button class="filter-btn">
+              <span class="filter-icon">
+                <img src="filter.png" alt="Filter" />
+              </span>
+            </button>
+            <div *ngIf="visibleDropdown === 'Task Type'" class="dropdown-menu">
+              <li *ngFor="let option of filterOptions['Task Type']" (click)="applyFilter('task_type', option)">
+                <span *ngIf="option?.id">{{ option.name }}</span>
+                <span *ngIf="!option?.id">{{ option }}</span>
+              </li>
+            </div>
+          </div>
         </th>
         <th>
           Time
-          <button class="filter-btn">
-            <span class="filter-icon">
-              <img src="filter.png" alt="Filter" />
-            </span>
-          </button>
+          <div class="dropdown" (mouseenter)="showDropdown('Time')" (mouseleave)="hideDropdown('Time')">
+            <button class="filter-btn">
+              <span class="filter-icon">
+                <img src="filter.png" alt="Filter" />
+              </span>
+            </button>
+            <div *ngIf="visibleDropdown === 'Time'" class="dropdown-menu">
+              <li *ngFor="let option of filterOptions['Time']" (click)="applyFilter('time', option)">
+                <span *ngIf="option?.id">{{ option.name }}</span>
+                <span *ngIf="!option?.id">{{ option }}</span>
+              </li>
+            </div>
+          </div>
         </th>
         <th>
           Contact Person
-          <button class="filter-btn">
-            <span class="filter-icon">
-              <img src="filter.png" alt="Filter" />
-            </span>
-          </button>
+          <div class="dropdown" (mouseenter)="showDropdown('Contact Person')" (mouseleave)="hideDropdown('Contact Person')">
+            <button class="filter-btn">
+              <span class="filter-icon">
+                <img src="filter.png" alt="Filter" />
+              </span>
+            </button>
+            <div *ngIf="visibleDropdown === 'Contact Person'" class="dropdown-menu">
+              <li *ngFor="let option of filterOptions['Contact Person']" (click)="applyFilter('contact_person', option)">
+                <span *ngIf="option?.id">{{ option.name }}</span>
+                <span *ngIf="!option?.id">{{ option }}</span>
+              </li>
+            </div>
+          </div>
         </th>
         <th>
           Notes
-          <button class="filter-btn">
-            <span class="filter-icon">
-              <img src="filter.png" alt="Filter" />
-            </span>
-          </button>
+          <!-- <div class="dropdown" (mouseenter)="showDropdown('Notes')" (mouseleave)="hideDropdown('Notes')">
+            <button class="filter-btn">
+              <span class="filter-icon">
+                <img src="filter.png" alt="Filter" />
+              </span>
+            </button>
+            <div *ngIf="visibleDropdown === 'Notes'" class="dropdown-menu">
+              <div *ngFor="let option of filterOptions['Notes']" (click)="applyFilter('Notes', option)">
+                {{ option }}
+              </div>
+            </div>
+          </div> -->
         </th>
         <th>
           Status
-          <button class="filter-btn">
-            <span class="filter-icon">
-              <img src="filter.png" alt="Filter" />
-            </span>
-          </button>
+          <div class="dropdown" (mouseenter)="showDropdown('Status')" (mouseleave)="hideDropdown('Status')">
+            <button class="filter-btn">
+              <span class="filter-icon">
+                <img src="filter.png" alt="Filter" />
+              </span>
+            </button>
+            <div *ngIf="visibleDropdown === 'Status'" class="dropdown-menu">
+              <li *ngFor="let option of filterOptions['Status']" (click)="applyFilter('status', option)">
+                <span *ngIf="option?.id">{{ option.name }}</span>
+                <span *ngIf="!option?.id">{{ option }}</span>
+              </li>
+            </div>
+          </div>
         </th>
         <th></th>
       </tr>
-    </thead>
+    </thead>    
     <tbody>
-      <tr *ngFor="let task of tasks">
+      <tr *ngFor="let task of tasks; ; let i = index">
         <td>{{ task.date }}</td>
         <td>{{ task.entity_name }}</td>
         <td>
@@ -85,7 +138,7 @@
           </span>
         </td>
         
-        <td>{{ task.time }}</td>
+        <td>{{ task.time.hours }}:{{ task.time.minutes }} {{ task.time.period }}</td>
         <td>{{ task.contact_person.name }}</td>
         <td>
           <!-- Check if 'note' is empty or not -->
@@ -102,8 +155,8 @@
             <button class="btn-options">Options  v</button>
             <ul class="dropdown-menu">
               <li >Duplicate</li>
-              <li >Edit</li>
-              <li>
+              <li (click)="openEditModal(task)">Edit</li>
+              <li (click)="changeStatus(task.id, i)">
                 Change Status to {{ task.status.name === 'Open' ? 'Closed' : 'Open' }}
               </li>
             </ul>

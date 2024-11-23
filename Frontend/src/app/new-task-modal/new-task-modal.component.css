@@ -1,118 +1,158 @@
+/* Modal Styles */
 .modal {
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .modal-content {
-    position: relative;
-    background-color: #fefefe;
-    padding: 24px;
-    border-radius: 1px;
-    width: 500px;
-    max-height: 80vh;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  input, select, textarea {
-    width: 98%;
-    padding: 12px;
-    padding-right: 18px;
-    border: 1px solid #e0e0e0;
-    border-radius: 1px;
-    background-color: #f8f9fa;
-  }
-  
-  .modal-footer {
-    margin-top: 24px;
-    display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-  }
-  
-  .cancel-btn {
-    padding: 10px 24px;
-    border: none;
-    border-radius: 1px;
-    background-color: #f8f9fa;
-    cursor: pointer;
-  }
-  
-  .save-btn {
-    padding: 10px 24px;
-    border: none;
-    border-radius: 1px;
-    background-color: #005587;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .status-buttons {
-    display: flex;
-    gap: 8px;
-  }
-  
-  .status-buttons button {
-    padding: 6px 16px;
-    border: none;
-    border-radius: 1px;
-    cursor: pointer;
-  }
-  
-  .open-btn {
-    background-color: #ff9900;
-    color: white;
-  }
-  
-  .closed-btn {
-    background-color: #f8f9fa;
-  }
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  padding: 24px;
+  border-radius: 1px;
+  width: 500px;
+  max-height: 80vh;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+input, select, textarea {
+  width: 98%;
+  padding: 12px;
+  padding-right: 18px;
+  border: 1px solid #e0e0e0;
+  border-radius: 1px;
+  background-color: #f8f9fa;
+}
+
+.modal-footer {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.cancel-btn {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 1px;
+  background-color: #f8f9fa;
+  cursor: pointer;
+}
+
+.save-btn {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 1px;
+  background-color: #005587;
+  color: white;
+  cursor: pointer;
+}
+
+/* Status Buttons Styles */
+.status-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.status-buttons button {
+  padding: 6px 16px;
+  border: none;
+  border-radius: 1px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Default state for open button */
+.open-btn {
+  background-color: #ff9900;
+  color: white;
+}
+
+/* Default state for closed button */
+.closed-btn {
+  background-color: #87CEEB;
+}
+
+/* Active (selected) state for closed button */
+.closed-btn.active {
+  background-color: #005587;
+  color: white;
+}
+
+/* Active (selected) state for open button */
+.open-btn.active {
+  background-color: #005587;
+  color: white;
+}
+
+/* Date-Time Group */
 .date-time-group {
-    display: flex;
-    gap: 12px;
-  }
-  
-  .date-input {
-    flex: 1;
-    margin-right: 80px;
-  }
-  
-  .time-inputs {
-    display: flex;
-    gap: 8px;
-  }
-  
-  .time-inputs select {
-    width: auto;
-    padding: 12px;
-    border: 1px solid #e0e0e0;
-    border-radius: 1px;
-    background-color: #f8f9fa;
-  }
+  display: flex;
+  gap: 12px;
+}
 
-  input, select, textarea {
-    padding: 12px;
-    border: 1px solid #e0e0e0;
-    border-radius: 1px;
-    background-color: #f8f9fa;
-  }
+.date-input {
+  flex: 1;
+  margin-right: 80px;
+}
+
+.time-inputs {
+  display: flex;
+  gap: 8px;
+}
+
+.time-inputs select {
+  width: auto;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 1px;
+  background-color: #f8f9fa;
+}
+
+/* Dropdown container */
+.dropdown-menu {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
+}
+
+/* Show dropdown on hover or focus */
+.form-group:hover .dropdown-menu,
+.form-group:focus-within .dropdown-menu {
+  display: block;
+}
+
+/* List styling */
+.dropdown-item {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
